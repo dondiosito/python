@@ -1,7 +1,6 @@
 import random
 import sys
 
-# Preguntas para el juego
 questions = [
     "¿Qué función se usa para obtener la longitud de una cadena en Python?",
     "¿Cuál de las siguientes opciones es un número entero en Python?",
@@ -10,7 +9,6 @@ questions = [
     "¿Cuál es el operador de comparación para verificar si dos valores son iguales?",
 ]
 
-# Respuestas posibles para cada pregunta
 answers = [
     ("size()", "len()", "length()", "count()"),
     ("3.14", "'42'", "10", "True"),
@@ -32,8 +30,9 @@ questions_to_ask = random.sample(quiz_data, k=3)
 
 score = 0  
 
+
 for question, options, correct_index in questions_to_ask:
-    print(question) 
+    print(question)  
     for i, option in enumerate(options):
         print(f"{i + 1}. {option}")  
 
@@ -42,27 +41,27 @@ for question, options, correct_index in questions_to_ask:
 
         if not user_input.isdigit():  
             print("Respuesta no válida")
-            score -= 1  
             sys.exit(1)  
 
         user_answer = int(user_input) - 1  
 
         if user_answer < 0 or user_answer >= len(options):  
             print("Respuesta no válida")
-            score -= 1
             sys.exit(1)
 
-        if user_answer == correct_index: 
+        if user_answer == correct_index:  
             print("¡Correcto!")
-            score += 1
+            score += 1  
             break  
         else:
             print("Incorrecto, intenta de nuevo.")
+            score -= 0.5  
 
     else:  
         print("Incorrecto. La respuesta correcta es:")
-        print(options[correct_index])  
+        print(options[correct_index])
 
-    print() 
+    print()  
 
 print(f"Puntaje final: {score}")
+
