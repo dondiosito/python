@@ -22,6 +22,7 @@ answers = [
     ),
     ("=", "==", "!=", "==="),
 ]
+score = 0
 # Índice de la respuesta correcta para cada pregunta, el el mismo orden que las preguntas
 correct_answers_index = [1, 2, 0, 3, 1]
 
@@ -42,18 +43,20 @@ for _ in range(3):
 
         if not user_input.isdigit():  # Verifica si no es un número
             print("Respuesta no válida")
+            score-=1
             sys.exit(1)  # Termina el programa con estado de error 1
 
         user_answer = int(user_input) - 1  # Convertir entrada a índice de lista
 
         if user_answer < 0 or user_answer >= len(answers[question_index]):
             print("Respuesta no válida")
+            score-=1
             sys.exit(1)
 
-        user_answer = int(input("Respuesta: ")) - 1
         # Se verifica si la respuesta es correcta
         if user_answer == correct_answers_index[question_index]:
             print("¡Correcto!")
+            score +=1
             break
     else:
         # Si el usuario no responde correctamente después de 2 intentos,
@@ -63,6 +66,7 @@ for _ in range(3):
 
     # Se imprime un blanco al final de la pregunta
     print()
+    print(score)
 """
 4. Comience un repositorio **local** y agregue el archivo recientemente creado.
 5. Crea tu propio repositorio **remoto** en [Github](https://github.com/) y suba el archivo al repositorio remoto.
